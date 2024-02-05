@@ -8,7 +8,6 @@ const MovieSearchComponent = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
 
   useEffect(() => {
-    // Fetch genres on component mount
     fetchGenres();
   }, []);
 
@@ -32,13 +31,10 @@ const MovieSearchComponent = () => {
   };
 
   const searchMovies = () => {
-    // Perform movie search based on selected genres
-    // You can customize this logic
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=pt-BR&page=1&with_genres=${selectedGenres.join(',')}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // Render movies or update state as needed
       })
       .catch((error) => console.error('Error searching movies:', error));
   };
